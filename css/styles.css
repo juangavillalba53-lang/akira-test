@@ -54,19 +54,23 @@ header h1 {
 .header-nav-links {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 0 15px;
 }
 
 .nav-btn,
 .btn-ig-header {
     text-decoration: none;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 6px 14px;
+    padding: 6px 12px;
     border-radius: 20px;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .nav-btn {
@@ -90,7 +94,7 @@ header h1 {
     color: #ffffff;
 }
 
-/* --- SECCIÓN HERO (NUEVO) --- */
+/* --- SECCIÓN HERO --- */
 .hero-producto {
     position: relative;
     width: 100%;
@@ -140,19 +144,28 @@ header h1 {
     text-align: left;
 }
 
-.hero-info .badge {
-    background: #1a1a1a;
-    color: #fff;
-    padding: 6px 15px;
+/* --- ESTILO DE CATEGORÍAS --- */
+.hero-categories {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-size: 0.7rem;
     font-weight: 600;
-    border-radius: 4px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    border-left: 3px solid #1a1a1a;
+    padding-left: 15px;
+}
+
+.hero-categories .dot {
+    color: #dbdbdb;
+    font-size: 1rem;
 }
 
 .hero-info h2 {
     font-size: 4rem;
-    margin: 15px 0;
+    margin: 10px 0 15px 0;
     line-height: 1;
     font-weight: 600;
 }
@@ -207,14 +220,14 @@ nav {
     border-bottom-color: #1a1a1a;
 }
 
-/* --- GRILLA DE PRODUCTOS (AGRANDADA) --- */
+/* --- GRILLA DE PRODUCTOS (CARTAS) --- */
 #contenedor-productos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 40px;
     width: 95%;
     max-width: 1400px;
-    padding-bottom: 100px;
+    padding-bottom: 80px;
 }
 
 .producto-card {
@@ -287,6 +300,117 @@ nav {
     overflow: hidden;
 }
 
+/* --- SECCIÓN JUEGOS DE MESA (CORREGIDA PARA IMÁGENES GRANDES) --- */
+.boardgames-container {
+    width: 95%;
+    max-width: 1400px;
+    padding: 80px 0;
+    border-top: 1px solid #eee;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.boardgames-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 35px;
+}
+
+.bg-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bg-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.bg-img {
+    width: 100%;
+    height: 280px;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    /* Eliminado para que la imagen ocupe todo */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.bg-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cambiado a cover para ocupar casi todo el cuadrado */
+    filter: drop-shadow(5px 10px 15px rgba(0, 0, 0, 0.15));
+    transition: transform 0.3s ease;
+}
+
+.bg-card:hover .bg-img img {
+    transform: scale(1.05);
+    /* Efecto hover premium */
+}
+
+.bg-info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+
+.bg-info .categoria {
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0;
+}
+
+.bg-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+
+.bg-info .descripcion {
+    font-size: 0.85rem;
+    color: #737373;
+    line-height: 1.5;
+    margin-top: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 /* --- SECCIÓN SOBRE EL LOCAL --- */
 .local-description {
     width: 100%;
@@ -312,31 +436,13 @@ nav {
 .local-content p {
     color: #666;
     line-height: 1.6;
-    margin-bottom: 40px;
 }
 
-.local-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-.local-item h3 {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-.local-item p {
-    margin: 5px 0;
-    font-size: 0.85rem;
-}
-
-/* --- NUEVO FOOTER PROFESIONAL --- */
+/* --- FOOTER UNIFICADO --- */
 .site-footer {
     background-color: #1a1a1a;
     color: #ffffff;
-    padding: 60px 20px 30px;
+    padding: 80px 20px 30px;
     width: 100%;
     margin-top: 0;
     box-sizing: border-box;
@@ -345,10 +451,16 @@ nav {
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
     padding-bottom: 50px;
+}
+
+.footer-section {
+    flex: 1;
+    text-align: center;
 }
 
 .footer-section h3 {
@@ -356,34 +468,27 @@ nav {
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 25px;
+    color: #ffffff;
 }
 
-.footer-section p,
-.footer-section ul li {
+.footer-section p {
     font-size: 0.85rem;
     color: #999;
     margin-bottom: 12px;
+    line-height: 1.5;
 }
 
-.footer-section ul {
-    padding: 0;
-    list-style: none;
-}
-
-.footer-section ul li a {
-    text-decoration: none;
-    color: #999;
-    transition: 0.3s;
-}
-
-.footer-section ul li a:hover {
+.footer-section h3 i {
+    margin-right: 8px;
     color: #fff;
+    font-size: 0.9rem;
 }
 
 .newsletter-form {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    align-items: center;
 }
 
 .newsletter-form input {
@@ -393,6 +498,9 @@ nav {
     color: #fff;
     border-radius: 4px;
     outline: none;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
 }
 
 .newsletter-form button {
@@ -404,14 +512,18 @@ nav {
     cursor: pointer;
     border-radius: 4px;
     transition: 0.3s;
+    width: 100%;
+    max-width: 300px;
 }
 
 .newsletter-form button:hover {
     background: #ccc;
 }
 
+/* --- BARRA INFERIOR --- */
 .footer-bottom {
-    max-width: 1200px;
+    width: 95%;
+    max-width: 1400px;
     margin: 0 auto;
     border-top: 1px solid #333;
     padding-top: 30px;
@@ -437,9 +549,27 @@ nav {
     height: 18px;
     filter: grayscale(100%) brightness(1.5);
     opacity: 0.5;
+    transition: all 0.3s ease;
 }
 
-/* AJUSTES PARA MÓVILES */
+.payment-methods img[alt="Visa"] {
+    height: 24px;
+}
+
+.payment-methods img:hover {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+}
+
+/* --- AJUSTES PARA MÓVILES --- */
+@media (max-width: 992px) {
+    .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
 @media (max-width: 768px) {
     .hero-content {
         flex-direction: column;
@@ -462,6 +592,13 @@ nav {
     .hero-info p {
         margin: 0 auto 30px;
     }
+
+    .hero-categories {
+        justify-content: center;
+        border-left: none;
+        padding-left: 0;
+        flex-wrap: wrap;
+    }
 }
 
 @media (max-width: 600px) {
@@ -472,5 +609,31 @@ nav {
     #contenedor-productos {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 20px;
+    }
+
+    .boardgames-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .header-nav-links {
+        gap: 5px;
+    }
+
+    .nav-btn,
+    .btn-ig-header {
+        padding: 4px 8px;
+        font-size: 0.55rem;
     }
 }

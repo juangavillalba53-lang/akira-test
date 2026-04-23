@@ -17,11 +17,13 @@
             <div class="header-nav-links">
                 <a href="index.html" class="nav-btn">Inicio</a>
 
+                <a href="#buscador" class="nav-btn">Cartas</a>
+                <a href="#juegos-mesa" class="nav-btn">Juegos de Mesa</a>
+                <a href="#info-local" class="nav-btn">Nosotros</a>
+
                 <a href="https://www.instagram.com/akira.comics.tcg/" target="_blank" class="btn-ig-header">
                     Seguinos
                 </a>
-
-                <a href="#info-local" class="nav-btn">Nosotros</a>
             </div>
         </header>
     </div>
@@ -35,8 +37,17 @@
             </div>
 
             <div class="hero-info">
-                <span class="badge">DESTACADO DE LA SEMANA</span>
-                <h2>Silver Tempest</h2>
+                <div class="hero-categories">
+                    <span>POKÉMON</span>
+                    <span class="dot">•</span>
+                    <span>MAGIC</span>
+                    <span class="dot">•</span>
+                    <span>ONE PIECE</span>
+                    <span class="dot">•</span>
+                    <span>LORCANA</span>
+                </div>
+
+                <h2>TCG</h2>
                 <p>Descubrí las cartas más raras de la última expansión. Singles y Boosters disponibles ahora en nuestra
                     tienda.</p>
                 <a href="#buscador" class="btn-principal">Explorar Catálogo</a>
@@ -49,6 +60,63 @@
     </nav>
 
     <main id="contenedor-productos"></main>
+
+    <section id="juegos-mesa" class="boardgames-container">
+        <div class="section-title">
+            <h2>Juegos de Mesa</h2>
+            <p>Explorá nuestra selección de títulos para compartir.</p>
+        </div>
+
+        <div class="boardgames-grid">
+            <div class="bg-card">
+                <div class="bg-img">
+                    <img src="assets/img/juegoteg.png" alt="TEG">
+                </div>
+                <div class="bg-info">
+                    <span class="categoria">Estrategia</span>
+                    <h3>TEG Tradicional</h3>
+                    <p class="descripcion">El juego argentino de estrategia por excelencia. Cumplí tu objetivo secreto,
+                        conquistá continentes y desafiá a tus amigos.</p>
+                </div>
+            </div>
+
+            <div class="bg-card">
+                <div class="bg-img">
+                    <img src="assets/img/mono.png" alt="Monopoly">
+                </div>
+                <div class="bg-info">
+                    <span class="categoria">Familiar</span>
+                    <h3>Monopoly Clásico</h3>
+                    <p class="descripcion">Convertite en un magnate de las propiedades. Comprá, vendé y negociá para
+                        construir tu imperio inmobiliario.</p>
+                </div>
+            </div>
+
+            <div class="bg-card">
+                <div class="bg-img">
+                    <img src="assets/img/catan.png" alt="Catan">
+                </div>
+                <div class="bg-info">
+                    <span class="categoria">Estrategia</span>
+                    <h3>Catan (Juego Base)</h3>
+                    <p class="descripcion">Gestioná recursos y comerciá en la isla de Catan. Un clásico moderno para los
+                        amantes de la negociación.</p>
+                </div>
+            </div>
+
+            <div class="bg-card">
+                <div class="bg-img">
+                    <img src="https://m.media-amazon.com/images/I/81fHwQpL3ZL._AC_SL1500_.jpg" alt="Dixit">
+                </div>
+                <div class="bg-info">
+                    <span class="categoria">Familiar</span>
+                    <h3>Dixit</h3>
+                    <p class="descripcion">Un juego de cartas ilustradas donde la imaginación y las pistas sutiles son
+                        la clave para ganar puntos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="info-local" class="local-description">
         <div class="local-content">
@@ -69,20 +137,6 @@
                 regularmente, porque creemos que los mejores momentos alrededor de las cartas se viven en comunidad.
                 10 años acompañando a la comunidad. Si coleccionás, competís o recién estás empezando, acá encontrás tu
                 lugar.</p>
-
-            <div class="local-grid">
-                <div class="local-item">
-                    <h3><i class="fa-regular fa-clock"></i> Horarios</h3>
-                    <p>Lunes a Sábados: 10:00 - 20:00 hs</p>
-                    <p>Domingos: Cerrado</p>
-                </div>
-                <div class="local-item">
-                    <h3><i class="fa-solid fa-location-dot"></i> Ubicación</h3>
-                    <p>Av. Rivadavia 159, Quilmes, Buenos Aires
-                        (Galeria La Francesa)
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -91,22 +145,24 @@
             <div class="footer-section">
                 <h3>Akira Comics TCG</h3>
                 <p><i class="fa-regular fa-envelope"></i> akira.comics@outlook.com</p>
-                <p>Quilmes, Buenos Aires, Argentina</p>
+                <p>Quilmes, Buenos Aires</p>
             </div>
 
             <div class="footer-section">
-                <h3>MENÚ</h3>
-                <ul>
-                    <li><a href="#">Cartas Sueltas</a></li>
-                    <li><a href="#">Boosters</a></li>
-                    <li><a href="#">Elite Trainer Box</a></li>
-                    <li><a href="#">Accesorios</a></li>
-                </ul>
+                <h3><i class="fa-regular fa-clock"></i> Horarios</h3>
+                <p>Lunes a Sábados</p>
+                <p>10:00 - 20:00 hs</p>
+                <p>Domingos: Cerrado</p>
+            </div>
+
+            <div class="footer-section">
+                <h3><i class="fa-solid fa-location-dot"></i> Ubicación</h3>
+                <p>Av. Rivadavia 159, Quilmes,</p>
+                <p>Bs. As. Galeria La Francesa</p>
             </div>
 
             <div class="footer-section">
                 <h3>Newsletter</h3>
-                <p>Suscribite para recibir las últimas novedades y ofertas.</p>
                 <div class="newsletter-form">
                     <input type="email" placeholder="Correo electrónico">
                     <button>SUSCRIBIR</button>
@@ -117,7 +173,7 @@
         <div class="footer-bottom">
             <p>© 2026 akiracomics. Todos los derechos reservados.</p>
             <div class="payment-methods">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                <img src="assets/img/ff.png" alt="Visa">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
             </div>
