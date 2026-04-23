@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+/* --- GENERAL --- */
+html {
+    scroll-behavior: smooth;
+    /* Para que al tocar "El Local" baje suavemente */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #1a1a1a;
+}
+
+/* --- BLOQUE FIJO: NEGRO TRANSPARENTE CON DESENFOQUE --- */
+.top-sticky-container {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    /* Negro elegante transparente */
+    backdrop-filter: blur(12px);
+    /* Vidrio esmerilado */
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+header h1 {
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin: 0;
+    color: #ffffff;
+}
+
+/* --- BOTONES DE NAVEGACIÓN EN HEADER --- */
+.header-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-btn,
+.btn-ig-header {
+    text-decoration: none;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Botones con borde transparente */
+.nav-btn {
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+}
+
+/* Botón Instagram resaltado */
+.btn-ig-header {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ffffff;
+}
+
+.btn-ig-header:hover {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+/* --- BUSCADOR: NORMAL (SE MUEVE AL SCROLLEAR) --- */
+nav {
+    width: 90%;
+    max-width: 400px;
+    margin: 40px 0;
+}
+
+#buscador {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #dbdbdb;
+    font-size: 0.9rem;
+    outline: none;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: transparent;
+    color: #1a1a1a;
+}
+
+#buscador:focus {
+    border-bottom-color: #1a1a1a;
+}
+
+/* --- GRILLA DE PRODUCTOS --- */
+#contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+    width: 90%;
+    max-width: 1100px;
+    padding-bottom: 80px;
+}
+
+.producto-card {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.producto-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    transition: opacity 0.3s ease;
+}
+
+.producto-card:hover img {
+    opacity: 0.8;
+}
+
+.info h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+}
+
+.info p {
+    font-size: 0.85rem;
+    color: #737373;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* --- SECCIÓN SOBRE EL LOCAL (AL FINAL) --- */
+.local-description {
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #eee;
+}
+
+.local-content {
+    max-width: 800px;
+    text-align: center;
+}
+
+.local-content h2 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.local-content p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.local-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.local-item h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.local-item p {
+    margin: 5px 0;
+    font-size: 0.85rem;
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 60px 40px;
+    color: #a8a8a8;
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 600px) {
+    .local-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 1.1rem;
+    }
+}
