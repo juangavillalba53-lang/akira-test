@@ -90,6 +90,98 @@ header h1 {
     color: #ffffff;
 }
 
+/* --- SECCIÓN HERO (NUEVO) --- */
+.hero-producto {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.hero-texto-fondo {
+    position: absolute;
+    font-size: 18vw;
+    font-weight: 900;
+    color: #f7f7f7;
+    z-index: 1;
+    user-select: none;
+    letter-spacing: -5px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+}
+
+.hero-image img {
+    max-width: 400px;
+    transform: rotate(-5deg);
+}
+
+.hero-info {
+    flex: 1;
+    text-align: left;
+}
+
+.hero-info .badge {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 6px 15px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}
+
+.hero-info h2 {
+    font-size: 4rem;
+    margin: 15px 0;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.hero-info p {
+    color: #737373;
+    max-width: 400px;
+    margin-bottom: 30px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.btn-principal {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 16px 40px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+}
+
+.btn-principal:hover {
+    background: #444;
+    transform: translateY(-3px);
+}
+
 /* --- BUSCADOR --- */
 nav {
     width: 90%;
@@ -118,21 +210,16 @@ nav {
 /* --- GRILLA DE PRODUCTOS (AGRANDADA) --- */
 #contenedor-productos {
     display: grid;
-    /* CAMBIO: Aumentamos el tamaño mínimo de 250px a 320px */
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 40px;
-    /* Un poco más de espacio entre cajas grandes */
     width: 95%;
-    /* Ocupamos más ancho de pantalla */
     max-width: 1400px;
-    /* Aumentamos el ancho máximo total */
     padding-bottom: 100px;
 }
 
 .producto-card {
     background-color: #ffffff;
     border-radius: 18px;
-    /* Bordes un poco más redondeados */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -140,27 +227,22 @@ nav {
     color: inherit;
     border: 1px solid #f0f0f0;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-    /* Sombra un poco más profunda */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .producto-card:hover {
     transform: translateY(-8px);
-    /* Se levanta un poco más */
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* Contenedor gris para la imagen (AGRANDADO) */
 .producto-card .img-container {
     width: 100%;
     height: 300px;
-    /* CAMBIO: Aumentamos la altura de 220px a 300px */
     background-color: #f7f7f7;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 30px;
-    /* Más aire para la imagen */
     box-sizing: border-box;
 }
 
@@ -171,19 +253,15 @@ nav {
     transition: transform 0.3s ease;
 }
 
-/* Información del producto (AJUSTADA) */
 .info {
     padding: 25px;
-    /* Más padding para cajas grandes */
     display: flex;
     flex-direction: column;
     gap: 8px;
-    /* Un poco más de espacio entre textos */
 }
 
 .info .categoria {
     font-size: 0.75rem;
-    /* Acompañamos el tamaño */
     color: #999;
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -192,21 +270,17 @@ nav {
 
 .info h3 {
     font-size: 1.1rem;
-    /* CAMBIO: Título más grande */
     font-weight: 600;
     margin: 0;
     color: #1a1a1a;
     line-height: 1.3;
 }
 
-/* LA DESCRIPCIÓN: estilo pequeño y gris */
 .info .descripcion {
     font-size: 0.85rem;
-    /* CAMBIO: Descripción un poco más grande */
     color: #737373;
     line-height: 1.5;
     margin-top: 5px;
-    /* Mantenemos el límite de 2 renglones */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -258,33 +332,145 @@ nav {
     font-size: 0.85rem;
 }
 
-/* --- FOOTER --- */
-footer {
-    padding: 60px 40px;
-    color: #a8a8a8;
-    font-size: 0.75rem;
-    text-align: center;
+/* --- NUEVO FOOTER PROFESIONAL --- */
+.site-footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 60px 20px 30px;
+    width: 100%;
+    margin-top: 0;
+    box-sizing: border-box;
 }
 
-/* Ajustes para móviles */
-@media (max-width: 600px) {
-    .local-grid {
-        grid-template-columns: 1fr;
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 50px;
+    padding-bottom: 50px;
+}
+
+.footer-section h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.footer-section p,
+.footer-section ul li {
+    font-size: 0.85rem;
+    color: #999;
+    margin-bottom: 12px;
+}
+
+.footer-section ul {
+    padding: 0;
+    list-style: none;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #999;
+    transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.newsletter-form input {
+    background: transparent;
+    border: 1px solid #333;
+    padding: 12px;
+    color: #fff;
+    border-radius: 4px;
+    outline: none;
+}
+
+.newsletter-form button {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.newsletter-form button:hover {
+    background: #ccc;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid #333;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-bottom p {
+    font-size: 0.75rem;
+    color: #555;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.payment-methods img {
+    height: 18px;
+    filter: grayscale(100%) brightness(1.5);
+    opacity: 0.5;
+}
+
+/* AJUSTES PARA MÓVILES */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
     }
 
+    .hero-image {
+        justify-content: center;
+    }
+
+    .hero-image img {
+        max-width: 280px;
+    }
+
+    .hero-info h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-info p {
+        margin: 0 auto 30px;
+    }
+}
+
+@media (max-width: 600px) {
     header h1 {
         font-size: 1.1rem;
     }
 
-    /* En móviles muy chicos, bajamos un poco el tamaño mínimo para que entren 2 si se puede */
     #contenedor-productos {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 20px;
-        padding: 20px;
-    }
-
-    .producto-card .img-container {
-        height: 250px;
-        /* Imagen un poco más baja en móvil */
     }
 }
