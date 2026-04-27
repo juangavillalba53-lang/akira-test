@@ -9,43 +9,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.getElementById('nav-menu');
 
     // --- 1. LÓGICA DE NAVEGACIÓN (MENÚ HAMBURGUESA) ---
-
     if (burgerBtn && navMenu) {
         burgerBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
 
-            // Animación manual de las líneas para formar una X
             const spans = burgerBtn.querySelectorAll('span');
             if (navMenu.classList.contains('active')) {
                 spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
                 spans[1].style.opacity = '0';
                 spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
             } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
+                resetBurger(spans);
             }
         });
 
-        // Cerrar el menú automáticamente al hacer clic en un link de sección
         const links = navMenu.querySelectorAll('.nav-btn');
         links.forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                // Reset de las líneas del botón
-                const spans = burgerBtn.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
+                resetBurger(burgerBtn.querySelectorAll('span'));
             });
         });
     }
 
-    // --- 2. CARGA INICIAL DE PRODUCTOS ---
+    function resetBurger(spans) {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+    }
 
+    // --- 2. CARGA INICIAL Y BUSCADOR ---
     actualizarTodasLasSecciones("");
-
-    // --- 3. EVENTO DEL BUSCADOR ---
 
     if (buscador) {
         buscador.addEventListener("input", (e) => {
@@ -55,31 +49,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Filtra y manda a renderizar cada sección
+     * Filtra y manda a renderizar cada sección.
+     * Aseguramos que busque en los IDs y Clases correctos.
      */
     function actualizarTodasLasSecciones(termino) {
-        // Filtrar y mostrar Cartas (vienen de productos.js)
+        // 1. Cartas (Pokémon/Magic)
         if (typeof productos !== 'undefined') {
             const filtrados = productos.filter(p => filtrarItem(p, termino));
-            renderizar(document.getElementById("contenedor-productos"), filtrados, "producto-card", "img-container", "info");
+            // Intentamos buscar por ID o por Clase de grilla
+            const contenedor = document.getElementById("contenedor-productos") || document.querySelector(".productos-grid");
+            renderizar(contenedor, filtrados, "producto-card", "img-container", "info");
         }
 
-        // Filtrar y mostrar Figuras (vienen de figuras.js)
+        // 2. Figuras
         if (typeof figuras !== 'undefined') {
             const filtrados = figuras.filter(f => filtrarItem(f, termino));
-            renderizar(document.querySelector(".figures-grid"), filtrados, "figure-card", "figure-img", "figure-info");
+            const contenedor = document.getElementById("contenedor-figuras") || document.querySelector(".figures-grid");
+            renderizar(contenedor, filtrados, "figure-card", "figure-img", "figure-info");
         }
 
-        // Filtrar y mostrar Juegos (vienen de juegos.js)
+        // 3. Juegos de Mesa
         if (typeof juegosMesa !== 'undefined') {
             const filtrados = juegosMesa.filter(j => filtrarItem(j, termino));
-            renderizar(document.querySelector(".boardgames-grid"), filtrados, "bg-card", "bg-img", "bg-info");
+            const contenedor = document.getElementById("contenedor-juegos") || document.querySelector(".boardgames-grid");
+            renderizar(contenedor, filtrados, "bg-card", "bg-img", "bg-info");
         }
     }
 
-    /**
-     * Lógica de filtrado: busca en nombre, categoría y descripción
-     */
     function filtrarItem(item, termino) {
         const nombre = (item.nombre || "").toLowerCase();
         const categoria = (item.categoria || "").toLowerCase();
@@ -87,9 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return nombre.includes(termino) || categoria.includes(termino) || desc.includes(termino);
     }
 
-    /**
-     * Función de renderizado universal
-     */
     function renderizar(contenedor, lista, claseCard, claseImg, claseInfo) {
         if (!contenedor) return;
         contenedor.innerHTML = "";
@@ -103,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement("div");
             card.className = claseCard;
 
+            // Mantenemos la estructura que unificamos en el CSS
             card.innerHTML = `
                 <div class="${claseImg}">
                     <img src="${item.imagen}" alt="${item.nombre}">

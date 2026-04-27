@@ -1,0 +1,174 @@
+/* --- SECCIÓN SOBRE EL LOCAL --- */
+.local-description {
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #eee;
+}
+
+.local-content {
+    max-width: 800px;
+    text-align: center;
+}
+
+.local-content h2 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.local-content p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* --- FOOTER UNIFICADO --- */
+.site-footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 80px 20px 30px;
+    width: 100%;
+    margin-top: 0;
+    box-sizing: border-box;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding-bottom: 50px;
+}
+
+.footer-section {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-section h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    color: #ffffff;
+}
+
+.footer-section p {
+    font-size: 0.85rem;
+    color: #999;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.footer-bottom {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    border-top: 1px solid #333;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-bottom p {
+    font-size: 0.75rem;
+    color: #555;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.payment-methods img {
+    height: 18px;
+    filter: grayscale(100%) brightness(1.5);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+/* --- AJUSTES PARA MÓVILES --- */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.1rem;
+    }
+
+    .header-nav-links {
+        display: none;
+    }
+
+    #contenedor-productos,
+    .boardgames-grid,
+    .figures-grid,
+    .boardgames-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .producto-card,
+    .bg-card,
+    .figure-card {
+        grid-template-columns: 1fr;
+        width: 95%;
+        max-width: 450px;
+        margin: 0 auto 25px auto;
+    }
+
+    .img-container,
+    .bg-img,
+    .figure-img {
+        height: 280px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    .img-container img,
+    .bg-img img,
+    .figure-img img {
+        object-fit: contain;
+        width: 98%;
+        height: 98%;
+        filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.08));
+    }
+
+    .hero-producto {
+        height: auto;
+        padding: 40px 0;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .hero-image img {
+        max-width: 95%;
+        transform: rotate(0deg);
+    }
+}
+
+@media (max-width: 992px) {
+    .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
