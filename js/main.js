@@ -1,20 +1,58 @@
 /**
  * MAIN.JS - El Director de Orquesta
- * Maneja la carga inicial y el filtrado universal de todas las secciones.
+ * Maneja la carga inicial, el filtrado universal y la navegación móvil.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     const buscador = document.getElementById("buscador");
+    const burgerBtn = document.getElementById('burger-btn');
+    const navMenu = document.getElementById('nav-menu');
 
-    // 1. CARGA INICIAL
-    // Renderizamos todo por primera vez al abrir la página
+    // --- 1. LÓGICA DE NAVEGACIÓN (MENÚ HAMBURGUESA) ---
+
+    if (burgerBtn && navMenu) {
+        burgerBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+
+            // Animación manual de las líneas para formar una X
+            const spans = burgerBtn.querySelectorAll('span');
+            if (navMenu.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+
+        // Cerrar el menú automáticamente al hacer clic en un link de sección
+        const links = navMenu.querySelectorAll('.nav-btn');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                // Reset de las líneas del botón
+                const spans = burgerBtn.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+        });
+    }
+
+    // --- 2. CARGA INICIAL DE PRODUCTOS ---
+
     actualizarTodasLasSecciones("");
 
-    // 2. EVENTO DEL BUSCADOR
-    buscador.addEventListener("input", (e) => {
-        const textoBusqueda = e.target.value.toLowerCase();
-        actualizarTodasLasSecciones(textoBusqueda);
-    });
+    // --- 3. EVENTO DEL BUSCADOR ---
+
+    if (buscador) {
+        buscador.addEventListener("input", (e) => {
+            const textoBusqueda = e.target.value.toLowerCase();
+            actualizarTodasLasSecciones(textoBusqueda);
+        });
+    }
 
     /**
      * Filtra y manda a renderizar cada sección
@@ -51,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * Función de renderizado universal
-     * Sirve para cualquier sección manteniendo las clases que definiste en el CSS
      */
     function renderizar(contenedor, lista, claseCard, claseImg, claseInfo) {
         if (!contenedor) return;
