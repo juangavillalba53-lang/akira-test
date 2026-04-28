@@ -719,3 +719,26 @@ nav {
         gap: 40px;
     }
 }
+
+/* --- ARREGLO DEFINITIVO PARA MOSTRAR LAS 12 CARTAS --- */
+
+/* Forzamos a que el contenedor de cartas se comporte como una grilla real */
+#contenedor-productos,
+.productos-grid {
+    display: grid !important;
+    /* Esto asegura que entren todas las que quepan, sin saltarse ninguna */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 25px !important;
+    padding: 20px !important;
+    width: 100% !important;
+    /* Evita que se colapsen o se oculten las cartas intermedias */
+    grid-auto-flow: row !important;
+}
+
+/* Forzamos a que cada carta ocupe solo su lugar y no intente expandirse */
+.producto-card {
+    grid-column: auto !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
