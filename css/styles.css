@@ -720,25 +720,27 @@ nav {
     }
 }
 
-/* --- ARREGLO DEFINITIVO PARA MOSTRAR LAS 12 CARTAS --- */
+/* --- ARREGLO DE GRILLA RESPONSIVE --- */
 
-/* Forzamos a que el contenedor de cartas se comporte como una grilla real */
 #contenedor-productos,
 .productos-grid {
     display: grid !important;
-    /* Esto asegura que entren todas las que quepan, sin saltarse ninguna */
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
-    gap: 25px !important;
-    padding: 20px !important;
+    /* Ajustamos el 320px: esto obliga a que si la pantalla es chica, solo entre una */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+    gap: 20px !important;
+    padding: 15px !important;
     width: 100% !important;
-    /* Evita que se colapsen o se oculten las cartas intermedias */
     grid-auto-flow: row !important;
 }
 
-/* Forzamos a que cada carta ocupe solo su lugar y no intente expandirse */
 .producto-card {
     grid-column: auto !important;
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    width: 100% !important;
+    /* Asegura que ocupe el ancho del celu */
+    margin: 0 auto !important;
+}
+
+/* Ajuste para que la imagen no se vea gigante en fila simple */
+.producto-card .img-container {
+    height: 250px !important;
 }
