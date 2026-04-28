@@ -38,12 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 2. CARGA INICIAL Y BUSCADOR ---
-    // Forzamos la carga inicial vacía
     actualizarTodasLasSecciones("");
 
     if (buscador) {
         buscador.addEventListener("input", (e) => {
-            // .trim() elimina espacios accidentales al inicio o final
             const textoBusqueda = e.target.value.toLowerCase().trim();
             actualizarTodasLasSecciones(textoBusqueda);
         });
@@ -51,32 +49,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * Filtra y manda a renderizar cada sección.
+     * Unificamos la búsqueda por clases como en Figuras y Juegos.
      */
     function actualizarTodasLasSecciones(termino) {
-        // 1. CARTAS
+        // 1. CARTAS (Unificado para usar clase .productos-grid)
         if (typeof productos !== 'undefined') {
             const filtrados = productos.filter(p => filtrarItem(p, termino));
-            const contenedor = document.getElementById("contenedor-productos");
+            const contenedor = document.querySelector(".productos-grid") || document.getElementById("contenedor-productos");
             renderizar(contenedor, filtrados, "producto-card", "img-container", "info");
         }
 
         // 2. FIGURAS
         if (typeof figuras !== 'undefined') {
             const filtrados = figuras.filter(f => filtrarItem(f, termino));
-            const contenedor = document.getElementById("contenedor-figuras") || document.querySelector(".figures-grid");
+            const contenedor = document.querySelector(".figures-grid") || document.getElementById("contenedor-figuras");
             renderizar(contenedor, filtrados, "figure-card", "figure-img", "figure-info");
         }
 
         // 3. JUEGOS DE MESA
         if (typeof juegosMesa !== 'undefined') {
             const filtrados = juegosMesa.filter(j => filtrarItem(j, termino));
-            const contenedor = document.getElementById("contenedor-juegos") || document.querySelector(".boardgames-grid");
+            const contenedor = document.querySelector(".boardgames-grid") || document.getElementById("contenedor-juegos");
             renderizar(contenedor, filtrados, "bg-card", "bg-img", "bg-info");
         }
     }
 
     function filtrarItem(item, termino) {
-        if (!termino) return true; // Si no hay búsqueda, mostrar todo
+        if (!termino) return true;
         const nombre = (item.nombre || "").toLowerCase();
         const categoria = (item.categoria || "").toLowerCase();
         const desc = (item.descripcion || "").toLowerCase();
@@ -84,12 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Función de renderizado optimizada
+     * Función de renderizado optimizada (String Building)
      */
     function renderizar(contenedor, lista, claseCard, claseImg, claseInfo) {
         if (!contenedor) return;
 
-        // Limpiamos el contenedor
         contenedor.innerHTML = "";
 
         if (lista.length === 0) {
@@ -97,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Usamos un fragmento de texto (string building) para mayor velocidad
         let acumuladorHTML = "";
 
         lista.forEach(item => {
@@ -115,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         });
 
-        // Insertamos todo el HTML de una sola vez
         contenedor.innerHTML = acumuladorHTML;
     }
 });
