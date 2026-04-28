@@ -720,19 +720,29 @@ nav {
     }
 }
 
-/* --- FIX DE VISIBILIDAD: MANTIENE TU DISEÑO ORIGINAL --- */
+/* --- RESET MAESTRO DE CARTAS --- */
 
+/* 1. Forzamos el contenedor para que no limite la cantidad de hijos */
 #contenedor-productos {
-    display: grid !important;
-    /* Asegura que sea grilla */
-    grid-auto-flow: row !important;
-    /* Fuerza a que sigan el orden natural */
+    display: block !important;
+    /* Cambiamos de grid a block para testear */
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
 }
 
+/* 2. Forzamos a que CADA carta se vea, ocupe su lugar y tenga tamaño */
 #contenedor-productos .producto-card {
-    /* El truco mágico: obliga a cada carta a ocupar SU lugar y no el de otros */
-    grid-column: auto !important;
     display: flex !important;
+    /* Asegura que no sea 'none' */
     visibility: visible !important;
     opacity: 1 !important;
+    width: 90% !important;
+    /* Tamaño cómodo para el celu */
+    max-width: 350px !important;
+    margin: 20px auto !important;
+    /* Las separa una de otra */
+    float: none !important;
+    /* Por si hay algún float viejo */
+    clear: both !important;
 }
