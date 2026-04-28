@@ -318,11 +318,12 @@ nav {
     /* Probá con 150px o 180px hasta que te guste el encuadre */
 }
 
-/* --- GRILLA DE PRODUCTOS UNIFICADA (VERSION PREMIUM) --- */
+/* --- GRILLA DE PRODUCTOS UNIFICADA (VERSIÓN CORREGIDA) --- */
 #contenedor-productos,
 .boardgames-grid,
 .figures-grid {
     display: grid;
+    /* Ajustamos el minmax a 280px para que en PC se vea impecable */
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 30px;
     width: 95%;
@@ -331,7 +332,6 @@ nav {
     padding-bottom: 80px;
     box-sizing: border-box;
     position: relative;
-    /* Necesario para la línea dinámica */
 }
 
 /* LA LÍNEA DINÁMICA: Se desvanece en las puntas */
@@ -341,11 +341,8 @@ nav {
     position: absolute;
     bottom: 0;
     left: 10%;
-    /* Empieza un poquito después del borde */
     width: 80%;
-    /* No toca los extremos */
     height: 1px;
-    /* Un degradado que va de transparente a gris suave y vuelve a transparente */
     background: linear-gradient(to right,
             transparent,
             rgba(0, 0, 0, 0.1),
@@ -367,6 +364,8 @@ nav {
     border: 1px solid #f0f0f0;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* FIX: Asegura que la carta no se colapse */
+    width: 100%;
 }
 
 .producto-card:hover,
@@ -398,7 +397,6 @@ nav {
     height: 100%;
     object-fit: contain;
     transform: scale(1.15);
-    /* Cambio a contain para que no se corten las figuras */
     transition: transform 0.3s ease;
 }
 
@@ -447,7 +445,6 @@ nav {
 }
 
 /* --- SECCIONES EXTRAS --- */
-
 .section-title {
     text-align: center;
     margin-bottom: 50px;
@@ -470,7 +467,6 @@ nav {
     position: relative;
     display: block;
 }
-
 
 .section-title p {
     color: #888;
@@ -624,90 +620,38 @@ nav {
     opacity: 1;
 }
 
-/* --- AJUSTES PARA MÓVILES --- */
-@media (max-width: 600px) {
+/* --- AJUSTES PARA MÓVILES (EL ARREGLO) --- */
+@media (max-width: 768px) {
 
-    /* Agregamos esto al inicio para evitar el desplazamiento lateral */
     html,
     body {
         overflow-x: hidden;
-        position: relative;
     }
 
-    header h1 {
-        font-size: 1.1rem;
+    /* Forzamos que las grillas se conviertan en una sola columna limpia */
+    #contenedor-productos,
+    .boardgames-grid,
+    .figures-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 25px !important;
+        padding-bottom: 40px;
     }
 
-    .header-nav-links {
-        display: none;
-        visibility: hidden;
-    }
-
-    /* Centrado de secciones y grillas unificado para todas las categorías */
-    .boardgames-container,
-    .figures-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* Centra la grilla de productos */
-        width: 95%;
-        /* Mismo ancho que el de las cartas */
-        max-width: 1400px;
-        /* EL VALOR CLAVE: igual al de las cartas */
-        margin: 0 auto;
-        /* Centra todo el bloque en la página */
-        padding: 80px 0;
-        border-top: 1px solid #eee;
-        box-sizing: border-box;
-    }
-
-    /* Tarjetas GRANDES y perfectamente centradas */
+    /* Tarjetas que ocupan el ancho del celu sin amontonarse */
     .producto-card,
     .bg-card,
     .figure-card {
-        width: 95%;
-        max-width: 450px;
-        margin: 0 auto 25px auto;
-    }
-
-    /* Contenedores de imagen unificados */
-    .producto-card .img-container,
-    .bg-card .bg-img,
-    .figure-card .figure-img {
-        height: 280px;
-        width: 100%;
-        background-color: #ffffff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 5px;
-        box-sizing: border-box;
-    }
-
-    /* Imágenes GRANDES unificadas */
-    .producto-card .img-container img,
-    .bg-card .bg-img img,
-    .figure-card .figure-img img {
-        object-fit: contain;
-        width: 98%;
-        height: 98%;
-        filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.08));
-    }
-
-    .hero-producto {
-        height: auto;
-        padding: 40px 0;
+        width: 92% !important;
+        max-width: 400px;
+        margin: 0 auto !important;
     }
 
     .hero-content {
         flex-direction: column;
         text-align: center;
         gap: 30px;
-    }
-
-    .hero-image img {
-        max-width: 95%;
-        transform: rotate(0deg);
     }
 }
 
@@ -718,31 +662,4 @@ nav {
         grid-template-columns: 1fr 1fr;
         gap: 40px;
     }
-}
-
-/* --- RESET MAESTRO DE CARTAS --- */
-
-/* 1. Forzamos el contenedor para que no limite la cantidad de hijos */
-#contenedor-productos {
-    display: block !important;
-    /* Cambiamos de grid a block para testear */
-    width: 100% !important;
-    height: auto !important;
-    overflow: visible !important;
-}
-
-/* 2. Forzamos a que CADA carta se vea, ocupe su lugar y tenga tamaño */
-#contenedor-productos .producto-card {
-    display: flex !important;
-    /* Asegura que no sea 'none' */
-    visibility: visible !important;
-    opacity: 1 !important;
-    width: 90% !important;
-    /* Tamaño cómodo para el celu */
-    max-width: 350px !important;
-    margin: 20px auto !important;
-    /* Las separa una de otra */
-    float: none !important;
-    /* Por si hay algún float viejo */
-    clear: both !important;
 }
