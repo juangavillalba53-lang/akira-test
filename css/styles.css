@@ -720,27 +720,19 @@ nav {
     }
 }
 
-/* --- ARREGLO DE GRILLA RESPONSIVE --- */
+/* --- FIX DE VISIBILIDAD: MANTIENE TU DISEÑO ORIGINAL --- */
 
-#contenedor-productos,
-.productos-grid {
+#contenedor-productos {
     display: grid !important;
-    /* Ajustamos el 320px: esto obliga a que si la pantalla es chica, solo entre una */
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
-    gap: 20px !important;
-    padding: 15px !important;
-    width: 100% !important;
+    /* Asegura que sea grilla */
     grid-auto-flow: row !important;
+    /* Fuerza a que sigan el orden natural */
 }
 
-.producto-card {
+#contenedor-productos .producto-card {
+    /* El truco mágico: obliga a cada carta a ocupar SU lugar y no el de otros */
     grid-column: auto !important;
-    width: 100% !important;
-    /* Asegura que ocupe el ancho del celu */
-    margin: 0 auto !important;
-}
-
-/* Ajuste para que la imagen no se vea gigante en fila simple */
-.producto-card .img-container {
-    height: 250px !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
