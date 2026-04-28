@@ -77,7 +77,7 @@ const productos = [
     },
     {
         id: 8,
-        nombre: "Pokemon TCG: Scarlet & Violet Prismatic Evolution Booster",
+        nombre: "POKEMON TCG: SCARLET & VIOLET PRISMATIC EVOLUTION BOOSTER",
         categoria: "Cartas",
         descripcion: `El paquete de refuerzo Pokémon Scarlet & Violet Prismatic Evolutions incluye 6 paquetes de cartas de refuerzo selladas para el 
                 juego de cartas coleccionables Pokémon. Cada paquete contiene cartas del conjunto Scarlet & Violet Prismatic Evolutions, que ofrece a los coleccionistas
@@ -97,7 +97,7 @@ const productos = [
     },
     {
         id: 10,
-        nombre: "Carrying On His Will (OP-13) ONE PIECE",
+        nombre: "CARRYING ON HIS WILL (OP-13) ONE PIECE",
         categoria: "Cartas",
         descripcion: "Carrying On His Will (OP-13) Booster de One Piece 🔥",
         precio: 12000,
