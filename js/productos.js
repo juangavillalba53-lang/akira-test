@@ -26,9 +26,10 @@ const productos = [
     },
     {
         id: 3,
-        nombre: "PREMIUM POSTER COLLECTION",
+        nombre: "POKÉMON TCG: FIRST PARTNER ILLUSTRATION COLLECTION (SERIES 1)",
         categoria: "Cartas",
-        descripcion: "¡Decora tu espacio con Mega Lucario ex o Mega Gardevoir ex!",
+        descripcion: `Caja coleccionable ideal para fanáticos de Pokémon TCG, que reúne cartas promocionales con ilustraciones exclusivas y sobres para expandir tu 
+                colección. Esta edición destaca por su presentación premium y contenido especial pensado tanto para jugadores como coleccionistas.`,
         precio: 12000,
         imagen: "assets/img/first.png" // Esto es una imagen de prueba
     },
