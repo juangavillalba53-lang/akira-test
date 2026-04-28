@@ -307,6 +307,11 @@ nav {
     /* Esto evita que la barra fija tape los títulos */
 }
 
+#seccion-cartas .section-title h2 {
+    margin-top: 10px !important;
+    /* Bajamos de los 60px que tenías a 20px */
+}
+
 /* Ajuste mayor para "Nosotros" para que se vea el fondo gris arriba */
 #info-local {
     scroll-margin-top: 40px;

@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (burgerBtn && navMenu) {
         burgerBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-
             const spans = burgerBtn.querySelectorAll('span');
             if (navMenu.classList.contains('active')) {
                 spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -39,36 +38,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 2. CARGA INICIAL Y BUSCADOR ---
+    // Forzamos la carga inicial vacía
     actualizarTodasLasSecciones("");
 
     if (buscador) {
         buscador.addEventListener("input", (e) => {
-            const textoBusqueda = e.target.value.toLowerCase();
+            // .trim() elimina espacios accidentales al inicio o final
+            const textoBusqueda = e.target.value.toLowerCase().trim();
             actualizarTodasLasSecciones(textoBusqueda);
         });
     }
 
     /**
      * Filtra y manda a renderizar cada sección.
-     * Aseguramos que busque en los IDs y Clases correctos.
      */
     function actualizarTodasLasSecciones(termino) {
-        // 1. Cartas (Pokémon/Magic)
+        // 1. CARTAS
         if (typeof productos !== 'undefined') {
             const filtrados = productos.filter(p => filtrarItem(p, termino));
-            // Intentamos buscar por ID o por Clase de grilla
-            const contenedor = document.getElementById("contenedor-productos") || document.querySelector(".productos-grid");
+            const contenedor = document.getElementById("contenedor-productos");
             renderizar(contenedor, filtrados, "producto-card", "img-container", "info");
         }
 
-        // 2. Figuras
+        // 2. FIGURAS
         if (typeof figuras !== 'undefined') {
             const filtrados = figuras.filter(f => filtrarItem(f, termino));
             const contenedor = document.getElementById("contenedor-figuras") || document.querySelector(".figures-grid");
             renderizar(contenedor, filtrados, "figure-card", "figure-img", "figure-info");
         }
 
-        // 3. Juegos de Mesa
+        // 3. JUEGOS DE MESA
         if (typeof juegosMesa !== 'undefined') {
             const filtrados = juegosMesa.filter(j => filtrarItem(j, termino));
             const contenedor = document.getElementById("contenedor-juegos") || document.querySelector(".boardgames-grid");
@@ -77,14 +76,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function filtrarItem(item, termino) {
+        if (!termino) return true; // Si no hay búsqueda, mostrar todo
         const nombre = (item.nombre || "").toLowerCase();
         const categoria = (item.categoria || "").toLowerCase();
         const desc = (item.descripcion || "").toLowerCase();
         return nombre.includes(termino) || categoria.includes(termino) || desc.includes(termino);
     }
 
+    /**
+     * Función de renderizado optimizada
+     */
     function renderizar(contenedor, lista, claseCard, claseImg, claseInfo) {
         if (!contenedor) return;
+
+        // Limpiamos el contenedor
         contenedor.innerHTML = "";
 
         if (lista.length === 0) {
@@ -92,22 +97,25 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        lista.forEach(item => {
-            const card = document.createElement("div");
-            card.className = claseCard;
+        // Usamos un fragmento de texto (string building) para mayor velocidad
+        let acumuladorHTML = "";
 
-            // Mantenemos la estructura que unificamos en el CSS
-            card.innerHTML = `
-                <div class="${claseImg}">
-                    <img src="${item.imagen}" alt="${item.nombre}">
-                </div>
-                <div class="${claseInfo}">
-                    <p class="categoria">${item.categoria || 'Coleccionable'}</p>
-                    <h3>${item.nombre}</h3>
-                    <p class="descripcion">${item.descripcion || 'Sin descripción.'}</p>
+        lista.forEach(item => {
+            acumuladorHTML += `
+                <div class="${claseCard}">
+                    <div class="${claseImg}">
+                        <img src="${item.imagen}" alt="${item.nombre}" onerror="this.src='assets/img/logo.png'">
+                    </div>
+                    <div class="${claseInfo}">
+                        <p class="categoria">${item.categoria || 'Coleccionable'}</p>
+                        <h3>${item.nombre}</h3>
+                        <p class="descripcion">${item.descripcion || 'Sin descripción.'}</p>
+                    </div>
                 </div>
             `;
-            contenedor.appendChild(card);
         });
+
+        // Insertamos todo el HTML de una sola vez
+        contenedor.innerHTML = acumuladorHTML;
     }
 });
